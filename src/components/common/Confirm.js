@@ -3,7 +3,7 @@ import { Text, View, Modal } from "react-native";
 import { CardSection } from "./CardSection";
 import { Button } from "./Button";
 
-const Confirm = ({ children, visible, potMode, plantMode }) => {
+const Confirm = ({ children, visible, onAccept, onDecline }) => {
   const { containerStyle, textStyle, cardSectionStyle } = styles;
   return (
     <Modal
@@ -18,8 +18,14 @@ const Confirm = ({ children, visible, potMode, plantMode }) => {
         </CardSection>
 
         <CardSection>
-          <Button onPress={potMode}>Pot Mode</Button>
-          <Button onPress={plantMode}>Plant Mode</Button>
+          <Button
+            onPress={() => {
+              onAccept();
+            }}
+          >
+            Pot Mode
+          </Button>
+          <Button onPress={() => onDecline()}>Plant Mode</Button>
         </CardSection>
       </View>
     </Modal>

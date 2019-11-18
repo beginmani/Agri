@@ -11,9 +11,17 @@ class PresentState extends Component {
 
   onAccept() {
     this.setState({ showModal: false });
+    firebase
+      .database()
+      .ref("mode")
+      .set(1);
   }
   onDecline() {
     this.setState({ showModal: false });
+    firebase
+      .database()
+      .ref("mode")
+      .set(0);
   }
   componentWillMount() {
     firebase
@@ -38,7 +46,7 @@ class PresentState extends Component {
       //console.log(keys);
       for (var i = 0; i < keys.length; i++) {
         var k = Object.values(users);
-        this.setState({ content: k });
+        // this.setState({ content: k });
         //console.log(content);
       }
 
@@ -69,12 +77,6 @@ class PresentState extends Component {
         <CardSection>
           <View>
             <Text style={styles.headingStyle}>Current State </Text>
-          </View>
-        </CardSection>
-
-        <CardSection>
-          <View>
-            <Text style={styles.titleStyle}>Battery is </Text>
           </View>
         </CardSection>
 

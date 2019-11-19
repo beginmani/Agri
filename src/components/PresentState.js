@@ -8,7 +8,11 @@ class PresentState extends Component {
     showModal: false,
     content: []
   };
-
+  constructor(props)
+{
+  super(this);
+  this.gotData = this.gotData.bind(this);
+}
   onAccept() {
     this.setState({ showModal: false });
     firebase
